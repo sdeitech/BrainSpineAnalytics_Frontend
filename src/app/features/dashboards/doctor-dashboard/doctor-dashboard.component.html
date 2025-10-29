@@ -1,0 +1,95 @@
+<div class="dashboard-wrapper">
+  <header class="dashboard-header">
+    <h1>Doctor’s Dashboard</h1>
+    <p>Quick overview of your patients and appointments</p>
+  </header>
+
+  <!-- Top Summary Cards -->
+  <section class="cards-grid">
+    <div class="dashboard-card patients">
+      <div class="card-icon"><i class="bi bi-people"></i></div>
+      <div class="card-info">
+        <p class="label">Active Patients</p>
+        <h2 class="value">{{ dashboardData.patients }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card appointments">
+      <div class="card-icon"><i class="bi bi-calendar-event"></i></div>
+      <div class="card-info">
+        <p class="label">Today’s Appointments</p>
+        <h2 class="value">{{ dashboardData.appointments }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card surgeries">
+      <div class="card-icon"><i class="bi bi-bandaid"></i></div>
+      <div class="card-info">
+        <p class="label">Scheduled Surgeries</p>
+        <h2 class="value">{{ dashboardData.surgeries }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card prescriptions">
+      <div class="card-icon"><i class="bi bi-file-earmark-medical"></i></div>
+      <div class="card-info">
+        <p class="label">Prescriptions Today</p>
+        <h2 class="value">{{ dashboardData.prescriptions }}</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Section Cards -->
+  <section class="detailed-section">
+    <!-- Upcoming Appointments -->
+    <div class="detail-card">
+      <h3><i class="bi bi-calendar-check me-2"></i> Upcoming Appointments</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Time</th>
+            <th>Type</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let app of upcomingAppointments">
+            <td>{{ app.patient }}</td>
+            <td>{{ app.time }}</td>
+            <td>{{ app.type }}</td>
+            <td>
+              <span [ngClass]="{
+                'status-confirmed': app.status === 'Confirmed',
+                'status-pending': app.status === 'Pending'
+              }">{{ app.status }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Follow-up Patients -->
+    <div class="detail-card">
+      <h3><i class="bi bi-person-lines-fill me-2"></i> Patient Follow-ups</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Last Visit</th>
+            <th>Diagnosis</th>
+            <th>Next Visit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let follow of followUpPatients">
+            <td>{{ follow.patient }}</td>
+            <td>{{ follow.lastVisit }}</td>
+            <td>{{ follow.diagnosis }}</td>
+            <td>{{ follow.nextVisit }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

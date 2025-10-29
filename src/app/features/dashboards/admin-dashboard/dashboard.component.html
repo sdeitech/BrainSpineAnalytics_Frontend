@@ -1,0 +1,131 @@
+<div class="dashboard-wrapper">
+  <header class="dashboard-header">
+    <h1>Hospital Admin Dashboard</h1>
+    <p>Overview of key operations, staff, and financial performance</p>
+  </header>
+
+  <!-- Top Summary Cards -->
+  <section class="cards-grid">
+    <!-- Total Patients -->
+    <div class="dashboard-card patients">
+      <div class="card-icon">
+        <i class="bi bi-person-hearts"></i>
+      </div>
+      <div class="card-info">
+        <p class="label">Total Patients</p>
+        <h2 class="value">{{ dashboardData.totalPatients }}</h2>
+      </div>
+    </div>
+
+    <!-- Active Staff -->
+    <div class="dashboard-card staff">
+      <div class="card-icon">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <div class="card-info">
+        <p class="label">Active Staff</p>
+        <h2 class="value">{{ dashboardData.activeStaff }}</h2>
+      </div>
+    </div>
+
+    <!-- Departments -->
+    <div class="dashboard-card departments">
+      <div class="card-icon">
+        <i class="bi bi-building"></i>
+      </div>
+      <div class="card-info">
+        <p class="label">Departments</p>
+        <h2 class="value">{{ dashboardData.departments }}</h2>
+      </div>
+    </div>
+
+    <!-- Revenue -->
+    <div class="dashboard-card revenue">
+      <div class="card-icon">
+        <i class="bi bi-cash-stack"></i>
+      </div>
+      <div class="card-info">
+        <p class="label">Monthly Revenue</p>
+        <h2 class="value">${{ dashboardData.revenue | number }}</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Section Cards -->
+  <section class="detailed-section">
+    <!-- Department Performance -->
+    <div class="detail-card">
+      <h3><i class="bi bi-activity me-2"></i> Department Performance</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Patients Treated</th>
+            <th>Doctors</th>
+            <th>Revenue ($)</th>
+            <th>Satisfaction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dept of departmentStats">
+            <td>{{ dept.name }}</td>
+            <td>{{ dept.patients }}</td>
+            <td>{{ dept.doctors }}</td>
+            <td>{{ dept.revenue | number }}</td>
+            <td>
+              <span [ngClass]="{
+                'status-high': dept.satisfaction >= 90,
+                'status-medium': dept.satisfaction < 90 && dept.satisfaction >= 70,
+                'status-low': dept.satisfaction < 70
+              }">
+                {{ dept.satisfaction }}%
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Financial Overview -->
+    <div class="detail-card">
+      <h3><i class="bi bi-graph-up-arrow me-2"></i> Financial Overview</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Revenue ($)</th>
+            <th>Expenses ($)</th>
+            <th>Profit ($)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let finance of financeData">
+            <td>{{ finance.month }}</td>
+            <td>{{ finance.revenue | number }}</td>
+            <td>{{ finance.expenses | number }}</td>
+            <td>{{ finance.profit | number }}</td>
+            <td>
+              <span [ngClass]="{
+                'status-profit': finance.profit > 0,
+                'status-loss': finance.profit <= 0 }">
+                {{ finance.profit > 0 ? 'Profit' : 'Loss' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Alerts -->
+    <div class="detail-card">
+      <h3><i class="bi bi-bell-fill me-2"></i> Admin Alerts & Notices</h3>
+      <ul class="alerts-list">
+        <li *ngFor="let alert of adminAlerts">
+          <i [class]="alert.icon"></i>
+          <span>{{ alert.message }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

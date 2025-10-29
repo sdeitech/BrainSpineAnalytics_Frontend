@@ -1,0 +1,121 @@
+<div class="dashboard-container">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div>
+      <h1>Welcome, {{ dashboardData.patientName }}</h1>
+      <p>Your personal health overview and upcoming care activities</p>
+    </div>
+    <button class="primary-btn"><i class="bi bi-person-circle me-2"></i> View Profile</button>
+  </header>
+
+  <!-- Overview Cards -->
+  <section class="summary-grid">
+    <div class="summary-card">
+      <i class="bi bi-calendar2-check-fill card-icon"></i>
+      <div>
+        <p>Upcoming Appointments</p>
+        <h2>{{ dashboardData.upcomingAppointments }}</h2>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <i class="bi bi-capsule-pill card-icon"></i>
+      <div>
+        <p>Active Prescriptions</p>
+        <h2>{{ dashboardData.prescriptions }}</h2>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <i class="bi bi-clipboard2-pulse card-icon"></i>
+      <div>
+        <p>Lab Reports</p>
+        <h2>{{ dashboardData.labReports }}</h2>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <i class="bi bi-cash-coin card-icon"></i>
+      <div>
+        <p>Pending Bills</p>
+        <h2>{{ dashboardData.billingDue }}</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Appointments -->
+  <section class="detail-section">
+    <h3><i class="bi bi-calendar-event me-2"></i> Upcoming Appointments</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+          <th>Department</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appt of upcomingAppointments">
+          <td>{{ appt.date }}</td>
+          <td>{{ appt.time }}</td>
+          <td>{{ appt.doctor }}</td>
+          <td>{{ appt.department }}</td>
+          <td>{{ appt.type }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Reports Section -->
+  <section class="detail-section">
+    <h3><i class="bi bi-file-earmark-medical me-2"></i> Recent Reports</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Date</th>
+          <th>Result</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of recentReports">
+          <td>{{ report.test }}</td>
+          <td>{{ report.date }}</td>
+          <td>{{ report.result }}</td>
+          <td>
+            <span class="status" [ngClass]="{
+              'status-available': report.status === 'Available',
+              'status-pending': report.status === 'Pending'
+            }">{{ report.status }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Prescriptions -->
+  <section class="detail-section">
+    <h3><i class="bi bi-capsule me-2"></i> Current Prescriptions</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Medicine</th>
+          <th>Dosage</th>
+          <th>Duration</th>
+          <th>Prescribed By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of prescriptions">
+          <td>{{ p.medicine }}</td>
+          <td>{{ p.dosage }}</td>
+          <td>{{ p.duration }}</td>
+          <td>{{ p.doctor }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

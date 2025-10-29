@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../core/services/Login/login.service';
-import{DashboardComponent} from '../dashboard/dashboard.component'
+import{DashboardComponent} from '../dashboards/admin-dashboard/dashboard.component'
 
 @Component({
   selector: 'app-login',
@@ -51,7 +51,7 @@ export class LoginComponent {
         this.isValidUser=true;
       },
       error: err => {
-        this.toastr.error(err.message);
+        console.error(err.message);
       }
     });
     // this code after verification of user

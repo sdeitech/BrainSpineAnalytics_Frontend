@@ -1,0 +1,128 @@
+.dashboard-container {
+  padding: 2.5rem;
+  background: #f5f8fb;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  color: #1a237e;
+  font-weight: 700;
+}
+
+.dashboard-header p {
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+.primary-btn {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: #0c57c1;
+}
+
+/* Summary Cards */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.summary-card {
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+}
+
+.summary-card .card-icon {
+  font-size: 2rem;
+  color: #1a73e8;
+  margin-right: 1rem;
+}
+
+.summary-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+.summary-card h2 {
+  margin: 0;
+  color: #222;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* Detail Sections */
+.detail-section {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.detail-section h3 {
+  margin-bottom: 1rem;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.styled-table th {
+  background-color: #f0f4f9;
+  color: #333;
+  text-align: left;
+}
+
+.status {
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.status-available {
+  color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.status-pending {
+  color: #f57c00;
+  background: #fff3e0;
+}

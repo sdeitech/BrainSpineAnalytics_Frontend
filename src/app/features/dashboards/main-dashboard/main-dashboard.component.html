@@ -1,0 +1,9 @@
+<div *ngIf="Role=='Admin'">
+   <app-dashboard></app-dashboard>
+</div>
+<div *ngIf="Role=='Doctor'">
+   <app-doctor-dashboard></app-doctor-dashboard>
+</div>
+<div *ngIf="Role=='Patient'">
+   <app-patient-dashboard></app-patient-dashboard>
+</div>
