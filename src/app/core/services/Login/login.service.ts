@@ -20,6 +20,7 @@ export class LoginService {
       map((res: any) => {
         if (res && res.token) {
           localStorage.setItem('authToken', res.token);
+          localStorage.setItem('userRole', res.role);
         }
         return res;
       }),
@@ -55,6 +56,10 @@ export class LoginService {
     return !!localStorage.getItem('authToken');
   }
   
+  // 🔹 retrun user role 
+  getUserRole(){
+    return localStorage.getItem('userRole');
+  }
   /** 🔹 Observable login status (for navbar, etc.) */
   getLoginStatus(): Observable<boolean> {
     return this.loggedIn$.asObservable();
