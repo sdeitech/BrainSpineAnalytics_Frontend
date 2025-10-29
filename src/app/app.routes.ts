@@ -12,6 +12,6 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },  //,canActivate: [AuthGuard]
 
    //wild card if user enter wrong url 
-  { path: '**', redirectTo: 'login'},
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
 
 ];
