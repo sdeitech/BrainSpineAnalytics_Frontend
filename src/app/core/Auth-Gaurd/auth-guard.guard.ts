@@ -8,7 +8,7 @@ export const AuthGuard: CanActivateFn = (route, state) => {
 
   // Check if the user is logged in (i.e., token exists)
   if (authService.isLoggedIn()) {
-    return true; // Allow route access
+    return true;
   } else {
     // Redirect to login if not logged in
     router.navigate(['/login']);

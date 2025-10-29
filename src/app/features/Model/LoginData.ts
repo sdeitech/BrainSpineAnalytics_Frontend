@@ -1,7 +1,6 @@
 export class LoginData{
  email:any=null
  password:any=null
- role:any=null
 }
 
 export class SignUpData{
