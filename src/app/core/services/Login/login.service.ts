@@ -2,20 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root' 
 })
 export class LoginService {
 
-  private baseUrl = 'https://your-api-url.com/api'; // 🔹 Replace with your backend API URL
+  private baseUrl = environment.api_url; // 🔹 Replace with your backend API URL
   private loggedIn$ = new BehaviorSubject<boolean>(this.hasToken());
   
   constructor(private http: HttpClient) { }
 
   // 🔹 User Login
   login(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials).pipe(
+    return this.http.post(`${this.baseUrl}/API/Auth/login`, credentials).pipe(
       map((res: any) => {
         if (res && res.token) {
           localStorage.setItem('authToken', res.token);
@@ -28,14 +29,14 @@ export class LoginService {
 
   // 🔹 User Registration
   signup(data:any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/signup`, data).pipe(
+    return this.http.post(`${this.baseUrl}/API/Auth/register`, data).pipe(
       catchError(this.handleError)
     );
   }
 
   // 🔹 Get Logged-in User Info
   getUserProfile(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/user/profile`, {
+    return this.http.get(`${this.baseUrl}/API/Auth/user/profile`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('authToken')}`
       }

@@ -1,7 +1,8 @@
 export class LoginData{
- UserName:any=null
- Email:any=null
- Password:any=null
- ConfirmPassword:any=null
- Role:any=null
+ firstname:any=null
+ lastName:any=null
+ email:any=null
+ password:any=null
+ confirmpassword:any=null
+ role:any=null
 }

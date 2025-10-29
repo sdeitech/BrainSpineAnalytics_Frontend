@@ -11,14 +11,14 @@
             </div>
             <form>
                 <div class="form-group">
-                    <label for="userName">User Name</label>
-                    <input type="text" id="userName" [(ngModel)]="loginData.UserName" name="username"
+                    <label for="email">User Name</label>
+                    <input type="text" id="email" [(ngModel)]="loginData.email" name="email"
                         class="form-control" placeholder="Enter your User name" />
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" [(ngModel)]="loginData.Password" name="password"
+                    <input type="password" id="password" [(ngModel)]="loginData.password" name="password"
                         class="form-control" placeholder="Enter your password" />
                 </div>
 
@@ -49,23 +49,28 @@
 
             <form>
                 <div class="form-group">
-                    <label for="userName">User Name</label>
-                    <input type="text" id="userName" [(ngModel)]="loginData.UserName" name="username"
-                        class="form-control" placeholder="Enter your User name" />
+                    <label for="firstName">User First Name</label>
+                    <input type="text" id="firstName" [(ngModel)]="loginData.firstname" name="firstName"
+                        class="form-control" placeholder="Enter First name" />
                 </div>
                 <div class="form-group">
-                    <label for="userName">Email</label>
-                    <input type="email" id="Email" [(ngModel)]="loginData.Email" name="Email" class="form-control"
+                    <label for="lastName">User Last Name</label>
+                    <input type="text" id="lastName" [(ngModel)]="loginData.lastName" name="lastName"
+                        class="form-control" placeholder="Enter Last name" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="Email" [(ngModel)]="loginData.email" name="email" class="form-control"
                         placeholder="Enter your Email" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" [(ngModel)]="loginData.Password" name="password"
+                    <input type="password" id="password" [(ngModel)]="loginData.password" name="password"
                         class="form-control" placeholder="Enter your password" />
                 </div>
                 <div class="form-group">
                     <label for="password">Confirm Password</label>
-                    <input type="password" id="password" [(ngModel)]="loginData.ConfirmPassword" name="password"
+                    <input type="password" id="password" [(ngModel)]="loginData.confirmpassword" name="password"
                         class="form-control" placeholder="Confirm your password" />
                 </div>
 

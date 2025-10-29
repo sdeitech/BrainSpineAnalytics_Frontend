@@ -33,11 +33,11 @@ export class LoginComponent {
 
   onLogin(): void {
     // Simple validation
-    if (!this.loginData.UserName) {
+    if (!this.loginData.email) {
       this.toastr.error('Please fill User Name');
       return;
     }
-    else if (!this.loginData.Password) {
+    else if (!this.loginData.password) {
       this.toastr.error('Please fill Password');
       return;
     }
@@ -104,36 +104,42 @@ export class LoginComponent {
     let errorCount = await this.validateSignUpForm()
     if (errorCount == 0) {
       //api call to save
-      this.toastr.success("Data has been recorded successfully.")
-      setTimeout(() => {
-        this.onLogIn()
-      }, 2800)
+       this.loginService.signup(this.loginData).subscribe(res=>{
+        this.toastr.success("Data has been recorded successfully.")
+          setTimeout(() => {
+            this.onLogIn()
+          }, 2800)
+       })
     }
   }
 
   validateSignUpForm() {
     let errorCount = 0;
-    if (!this.loginData.UserName) {
+    if (!this.loginData.firstname) {
       errorCount++
-      this.toastr.error("Enter User Name")
+      this.toastr.error("Enter First Name")
     }
-    else if (!this.loginData.Email) {
+    else if (!this.loginData.lastName) {
+      errorCount++
+      this.toastr.error("Enter Last Name")
+    }
+    else if (!this.loginData.email) {
       errorCount++
       this.toastr.error("Enter Email")
     }
-    else if (!this.loginData.Password) {
+    else if (!this.loginData.password) {
       errorCount++
       this.toastr.error("Enter Password")
     }
-    else if (!this.loginData.ConfirmPassword) {
+    else if (!this.loginData.confirmpassword) {
       errorCount++
       this.toastr.error("Confirm your password")
     }
-    if (errorCount == 0 && !this.loginData.Email.includes('@')) {
+    if (errorCount == 0 && !this.loginData.email.includes('@')) {
       errorCount++
       this.toastr.warning("Enter valid Email")
     }
-    if (errorCount == 0 && this.loginData.Password != this.loginData.ConfirmPassword) {
+    if (errorCount == 0 && this.loginData.password != this.loginData.confirmpassword) {
       errorCount++
       this.toastr.warning("Password and Confirm Password must be the same")
     }
