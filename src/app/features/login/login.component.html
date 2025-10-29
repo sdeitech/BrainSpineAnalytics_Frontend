@@ -1,0 +1,99 @@
+<div class="loginPage">
+    <div class="login-img">
+        <img class="loginImg" src="assets/images/login.jpg" alt="oops">
+    </div>
+    <div class="login-container">
+
+        <!-- Login Starts -->
+        <div class="login-card" *ngIf="isLogin">
+            <div class="login-header">
+                <img src="assets/logo/logo.png" style="height: 170px;" alt="oops">
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" id="userName" [(ngModel)]="loginData.UserName" name="username"
+                        class="form-control" placeholder="Enter your User name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" [(ngModel)]="loginData.Password" name="password"
+                        class="form-control" placeholder="Enter your password" />
+                </div>
+
+                <button type="button" class="login-button" (click)="onLogin()" [disabled]="isLoading">
+                    <span *ngIf="!isLoading">Login</span>
+                    <span *ngIf="isLoading">Logging in...</span>
+                </button>
+
+            </form>
+
+            <div class="switch-mode">
+                <p>
+                    Don't have an account?
+                    <a href="#" (click)="onSignup(); $event.preventDefault()">
+                        Sign Up
+                    </a>
+                </p>
+            </div>
+        </div>
+        <!-- Login Ends -->
+
+
+        <!-- SignUp Starts -->
+        <div class="login-card" *ngIf="!isLogin">
+            <div class="login-header">
+                <img src="assets/logo/logo.png" style="height: 170px;" alt="oops">
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" id="userName" [(ngModel)]="loginData.UserName" name="username"
+                        class="form-control" placeholder="Enter your User name" />
+                </div>
+                <div class="form-group">
+                    <label for="userName">Email</label>
+                    <input type="email" id="Email" [(ngModel)]="loginData.Email" name="Email" class="form-control"
+                        placeholder="Enter your Email" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" [(ngModel)]="loginData.Password" name="password"
+                        class="form-control" placeholder="Enter your password" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" id="password" [(ngModel)]="loginData.ConfirmPassword" name="password"
+                        class="form-control" placeholder="Confirm your password" />
+                </div>
+
+                <button *ngIf="!isLogin" type="button" class="login-button" (click)="SignUp()" [disabled]="isLoading">
+                    <span>Sign Up</span>
+                </button>
+
+            </form>
+
+            <div class="switch-mode" *ngIf="isLogin">
+                <p>
+                    Don't have an account?
+                    <a href="#" (click)="onSignup(); $event.preventDefault()">
+                        Sign Up
+                    </a>
+                </p>
+            </div>
+            <div class="switch-mode" *ngIf="!isLogin">
+                <p>
+                    Already have an account?
+                    <a href="#" (click)="onLogIn(); $event.preventDefault()">
+                        Log In
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- SignUp Ends -->
+    </div>
+
+</div>
