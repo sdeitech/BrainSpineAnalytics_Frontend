@@ -12,8 +12,8 @@
             <form>
                 <div class="form-group">
                     <label for="email">User Name</label>
-                    <input type="text" id="email" [(ngModel)]="loginData.email" name="email"
-                        class="form-control" placeholder="Enter your User name" />
+                    <input type="text" id="email" [(ngModel)]="loginData.email" name="email" class="form-control"
+                        placeholder="Enter your User name" />
                 </div>
 
                 <div class="form-group">
@@ -46,40 +46,52 @@
             <div class="login-header">
                 <img src="assets/logo/logo.png" style="height: 170px;" alt="oops">
             </div>
+            <div class="scroll-container">
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">User First Name</label>
+                        <input type="text" id="firstName" [(ngModel)]="signUpData.firstname" name="firstName"
+                            class="form-control" placeholder="Enter First name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">User Last Name</label>
+                        <input type="text" id="lastName" [(ngModel)]="signUpData.lastName" name="lastName"
+                            class="form-control" placeholder="Enter Last name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="Email" [(ngModel)]="signUpData.email" name="email" class="form-control"
+                            placeholder="Enter your Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Select Role</label>
+                        <select id="role" name="role" class="form-control"
+                            style="border-radius: 8px !important;padding: 10px !important;font-size: 14px !important;"
+                            [(ngModel)]="signUpData.role">
+                            <option [ngValue]="null" disabled>Select your role</option>
+                            <option *ngFor="let role of roles" [value]="role.id">
+                                {{ role.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" [(ngModel)]="signUpData.password" name="password"
+                            class="form-control" placeholder="Enter your password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Confirm Password</label>
+                        <input type="password" id="password" [(ngModel)]="signUpData.confirmpassword" name="password"
+                            class="form-control" placeholder="Confirm your password" />
+                    </div>
 
-            <form>
-                <div class="form-group">
-                    <label for="firstName">User First Name</label>
-                    <input type="text" id="firstName" [(ngModel)]="loginData.firstname" name="firstName"
-                        class="form-control" placeholder="Enter First name" />
-                </div>
-                <div class="form-group">
-                    <label for="lastName">User Last Name</label>
-                    <input type="text" id="lastName" [(ngModel)]="loginData.lastName" name="lastName"
-                        class="form-control" placeholder="Enter Last name" />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="Email" [(ngModel)]="loginData.email" name="email" class="form-control"
-                        placeholder="Enter your Email" />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" [(ngModel)]="loginData.password" name="password"
-                        class="form-control" placeholder="Enter your password" />
-                </div>
-                <div class="form-group">
-                    <label for="password">Confirm Password</label>
-                    <input type="password" id="password" [(ngModel)]="loginData.confirmpassword" name="password"
-                        class="form-control" placeholder="Confirm your password" />
-                </div>
+                    <button *ngIf="!isLogin" type="button" class="login-button" (click)="SignUp()"
+                        [disabled]="isLoading">
+                        <span>Sign Up</span>
+                    </button>
 
-                <button *ngIf="!isLogin" type="button" class="login-button" (click)="SignUp()" [disabled]="isLoading">
-                    <span>Sign Up</span>
-                </button>
-
-            </form>
-
+                </form>
+            </div>
             <div class="switch-mode" *ngIf="isLogin">
                 <p>
                     Don't have an account?

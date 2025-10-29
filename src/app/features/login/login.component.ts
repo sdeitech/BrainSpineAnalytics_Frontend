@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginData } from '../Model/LoginData';
+import { LoginData, SignUpData } from '../Model/LoginData';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../core/services/Login/login.service';
 import{DashboardComponent} from '../dashboards/admin-dashboard/dashboard.component'
+import { MasterService } from '../../shared/Services/master/master.service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,8 +17,16 @@ import{DashboardComponent} from '../dashboards/admin-dashboard/dashboard.compone
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  
+ 
 
   public loginData = new LoginData();
+  public signUpData = new SignUpData();
+  public roles: any[] = [
+    { id: 1, name: 'Doctor' },
+    { id: 2, name: 'Admin' },
+    { id: 3, name: 'Patient' }
+  ];;
   public isLoading = false;
   public isValidUser = false;
   public isLogin = true;
@@ -24,14 +34,25 @@ export class LoginComponent {
 
   constructor(
     private toastr: ToastrService,
+    private masterService:MasterService,
     private loginService:LoginService,
     private router: Router) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+   await this.getRoleMaster()
   }
 
-  onLogin(): void {
+  getRoleMaster(){
+    let obj:any={}
+    obj.Action="GetRoleMaster"
+    this.masterService.getMasterData(obj).subscribe(res=>{
+      if(res){
+         this.roles=res;
+      }
+    })
+  }
+  async onLogin(): Promise<void> {
     // Simple validation
     if (!this.loginData.email) {
       this.toastr.error('Please fill User Name');
@@ -46,29 +67,25 @@ export class LoginComponent {
     this.errorMessage = '';
 
     // After API call
-    this.loginService.login(this.loginData).subscribe({next: res => {
+    await this.loginService.login(this.loginData).subscribe({next: res => {
         this.toastr.success('Login successful!');
         this.isValidUser=true;
+        if (this.isValidUser) {
+            setTimeout(() => {
+              this.isLoading = false;
+              // Navigate to dashboard
+              this.router.navigate(['/dashboard']);
+            }, 1500);
+          } else {
+            this.isLoading = false
+            this.toastr.error('Invalid username or password.');
+          }
       },
       error: err => {
         console.error(err.message);
       }
     });
-    // this code after verification of user
-    if (!this.isValidUser) {
-      setTimeout(() => {
-        this.isLoading = false;
-        // Navigate to dashboard
-        this.router.navigate(['/dashboard']);
-        //this.router.navigate(['/PowerBIdashboard']); 
-
-        // dashboard
-      }, 1500);
-    } else {
-      this.isLoading = false
-      this.toastr.error('Invalid username or password.');
-    }
-
+  
   }
 
   navigateByRole(role: string) {
@@ -92,19 +109,21 @@ export class LoginComponent {
 
   onSignup() {
     this.isLogin = false;
-    this.loginData = new LoginData()
+    this.loginData = new LoginData();
+    this.signUpData = new SignUpData();
   }
 
   onLogIn() {
     this.isLogin = true;
-    this.loginData = new LoginData()
+    this.loginData = new LoginData();
+    this.signUpData = new SignUpData();
   }
 
   async SignUp() {
     let errorCount = await this.validateSignUpForm()
     if (errorCount == 0) {
       //api call to save
-       this.loginService.signup(this.loginData).subscribe(res=>{
+       await this.loginService.signup(this.signUpData).subscribe(res=>{
         this.toastr.success("Data has been recorded successfully.")
           setTimeout(() => {
             this.onLogIn()
@@ -115,31 +134,31 @@ export class LoginComponent {
 
   validateSignUpForm() {
     let errorCount = 0;
-    if (!this.loginData.firstname) {
+    if (!this.signUpData.firstname) {
       errorCount++
       this.toastr.error("Enter First Name")
     }
-    else if (!this.loginData.lastName) {
+    else if (!this.signUpData.lastName) {
       errorCount++
       this.toastr.error("Enter Last Name")
     }
-    else if (!this.loginData.email) {
+    else if (!this.signUpData.email) {
       errorCount++
       this.toastr.error("Enter Email")
     }
-    else if (!this.loginData.password) {
+    else if (!this.signUpData.password) {
       errorCount++
       this.toastr.error("Enter Password")
     }
-    else if (!this.loginData.confirmpassword) {
+    else if (!this.signUpData.confirmpassword) {
       errorCount++
       this.toastr.error("Confirm your password")
     }
-    if (errorCount == 0 && !this.loginData.email.includes('@')) {
+    if (errorCount == 0 && !this.signUpData.email.includes('@')) {
       errorCount++
       this.toastr.warning("Enter valid Email")
     }
-    if (errorCount == 0 && this.loginData.password != this.loginData.confirmpassword) {
+    if (errorCount == 0 && this.signUpData.password != this.signUpData.confirmpassword) {
       errorCount++
       this.toastr.warning("Password and Confirm Password must be the same")
     }

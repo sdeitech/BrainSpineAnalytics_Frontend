@@ -240,3 +240,44 @@ img {
     font-size: 12px;
   }
 }
+
+
+
+/* Smooth Scrollable Signup Form */
+.scroll-container {
+  max-height: 70vh; /* scroll height limit */
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #cfcfcf #f8f8f8;; /* thumb color, track color */
+  scroll-behavior: smooth;
+}
+
+/* Chrome, Edge, Safari scrollbar design */
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-block: 5px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7e77ff, #9a84f8);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d2d0f8, #b0a6e4);
+  box-shadow: 0 0 6px rgba(120, 100, 255, 0.6);
+}
+
+/* Scroll feel smooth */
+.scroll-container {
+  scroll-behavior: smooth;
+}

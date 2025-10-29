@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-patient-dashboard',
   standalone: true,
@@ -10,14 +11,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './patient-dashboard.component.css'
 })
 export class PatientDashboardComponent {
- dashboardData: any = {};
+  public UserName:any=''
+  dashboardData: any = {};
   upcomingAppointments: any[] = [];
   recentReports: any[] = [];
   prescriptions: any[] = [];
 
   constructor() {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.UserName= await localStorage.getItem('userRole');
     this.loadDashboard();
   }
 

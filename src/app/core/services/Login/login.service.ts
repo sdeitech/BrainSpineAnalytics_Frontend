@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment.prod';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root' 
@@ -19,8 +20,13 @@ export class LoginService {
     return this.http.post(`${this.baseUrl}/API/Auth/login`, credentials).pipe(
       map((res: any) => {
         if (res && res.token) {
-          localStorage.setItem('authToken', res.token);
-          localStorage.setItem('userRole', res.role);
+            const decoded: any = jwtDecode(res.token);
+            localStorage.setItem('authToken', res.token);
+            localStorage.setItem('username', decoded.firstName);
+
+            const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+          localStorage.setItem('userRole', userRole);
         }
         return res;
       }),
