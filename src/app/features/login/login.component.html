@@ -1,104 +1,104 @@
-<div class="loginPage">
-    <div class="login-img">
-        <img class="loginImg" src="assets/images/login.jpg" alt="oops">
+<div class="login-wrapper">
+    
+    <!-- LEFT IMAGE SECTION -->
+    <div class="login-left">
+        <img src="assets/images/download.jpg" alt="login background">
     </div>
-    <div class="login-container">
 
-        <!-- Login Starts -->
+    <!-- RIGHT FORM SECTION -->
+    <div class="login-right">
+
+        <!-- Login Form -->
         <div class="login-card" *ngIf="isLogin">
-            <div class="login-header">
-                <img src="assets/logo/logo.png" style="height: 170px;" alt="oops">
+            <div class="brand-box">
+                <span class="brand-text">
+                    brain<span class="plus">+</span>spine <span class="plus">+</span>
+                    <span class="pain">pain</span>
+                </span>
+                <img src="assets/logo/logobrainspine.png" class="brand-logo" alt="logo">
             </div>
+
+
+            <h2>Sign In</h2>
+            <p style="margin-bottom: 25px;">Please login to continue</p>
+
             <form>
                 <div class="form-group">
-                    <label for="email">User Name</label>
-                    <input type="text" id="email" [(ngModel)]="loginData.email" name="email" class="form-control"
-                        placeholder="Enter your User name" />
+                    <label>Email</label>
+                    <input type="text" [(ngModel)]="loginData.email" name="email" placeholder="Enter your User name">
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" [(ngModel)]="loginData.password" name="password"
-                        class="form-control" placeholder="Enter your password" />
+                    <label>Password</label>
+                    <input type="password" [(ngModel)]="loginData.password" name="password" placeholder="Enter your password">
                 </div>
 
-                <button type="button" class="login-button" (click)="onLogin()" [disabled]="isLoading">
-                    <span *ngIf="!isLoading">Login</span>
+                <button type="button" (click)="onLogin()" [disabled]="isLoading">
+                    <span *ngIf="!isLoading">Login →</span>
                     <span *ngIf="isLoading">Logging in...</span>
                 </button>
-
             </form>
 
-            <div class="switch-mode">
-                <p>
-                    Don't have an account?
-                    <a href="#" (click)="onSignup(); $event.preventDefault()">
-                        Sign Up
-                    </a>
-                </p>
-            </div>
+            <p style="display: none;" class="switch">Don't have an account?
+                <a (click)="onSignup(); $event.preventDefault()">Sign Up</a>
+            </p>
         </div>
-        <!-- Login Ends -->
 
-
-        <!-- SignUp Starts -->
+        <!-- Signup Form -->
         <div class="login-card" *ngIf="!isLogin">
-            <div class="login-header">
-                <img src="assets/logo/logo.png" style="height: 170px;" alt="oops">
-            </div>
-            <div class="scroll-container">
+            <img src="assets/logo/logobrainspine.png" class="brand-logo" alt="logo">
+            <h2>Create Account</h2>
+
+            <div class="scroll-area">
                 <form>
                     <div class="form-group">
-                        <label for="firstName">User First Name</label>
-                        <input type="text" id="firstName" [(ngModel)]="signUpData.firstname" name="firstName"
-                            class="form-control" placeholder="Enter First name" />
+                        <label>First Name</label>
+                        <input type="text" [(ngModel)]="signUpData.firstname" name="firstName" placeholder="Enter First name">
                     </div>
+
                     <div class="form-group">
-                        <label for="lastName">User Last Name</label>
-                        <input type="text" id="lastName" [(ngModel)]="signUpData.lastName" name="lastName"
-                            class="form-control" placeholder="Enter Last name" />
+                        <label>Last Name</label>
+                        <input type="text" [(ngModel)]="signUpData.lastName" name="lastName" placeholder="Enter Last name">
                     </div>
+
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="Email" [(ngModel)]="signUpData.email" name="email" class="form-control"
-                            placeholder="Enter your Email" />
+                        <label>Email</label>
+                        <input type="email" [(ngModel)]="signUpData.email" name="email" placeholder="Enter your Email">
                     </div>
+
                     <div class="form-group">
-                        <label for="role">Select Role</label>
-                        <select id="role" name="role" class="form-control"
-                            style="border-radius: 8px !important;padding: 10px !important;font-size: 14px !important;"
-                            [(ngModel)]="signUpData.role">
+                        <label>Select Role</label>
+                        <select [(ngModel)]="signUpData.role" name="role">
                             <option [ngValue]="null" disabled>Select your role</option>
                             <option *ngFor="let role of roles" [value]="role.id">
                                 {{ role.name }}
                             </option>
                         </select>
                     </div>
-                   <div class="form-group">
-                <label for="password">Password</label>
-                <div class="password-wrapper">
-                    <input
-                    type="{{ showPassword ? 'text' : 'password' }}"
-                    id="password"
-                    name="password"
-                    [(ngModel)]="signUpData.password"
-                    class="form-control"
-                    placeholder="Enter your password"
-                    required
-                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                    #password="ngModel"
-                    />
-                    <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="showPassword = !showPassword"></i>
-                </div>
+                    <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <div class="password-wrapper">
+                                        <input
+                                        type="{{ showPassword ? 'text' : 'password' }}"
+                                        id="password"
+                                        name="password"
+                                        [(ngModel)]="signUpData.password"
+                                        class="form-control"
+                                        placeholder="Enter your password"
+                                        required
+                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                                        #password="ngModel"
+                                        />
+                                        <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="showPassword = !showPassword"></i>
+                                    </div>
 
-                <div *ngIf="password.invalid && password.touched" class="error-banner">
-                    <p *ngIf="password.errors?.['required']">Password is required.</p>
-                    <p *ngIf="password.errors?.['pattern']">
-                    Password must have at least 8 characters, including uppercase, lowercase, number & special character.
-                    </p>
-                </div>
-                </div>
-
+                                    <div *ngIf="password.invalid && password.touched" class="error-banner">
+                                        <p *ngIf="password.errors?.['required']">Password is required.</p>
+                                        <p *ngIf="password.errors?.['pattern']">
+                                        Password must have at least 8 characters, including uppercase, lowercase, number & special character.
+                                        </p>
+                                    </div>
+                                    </div>
                     <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
                     <div class="password-wrapper">
@@ -121,32 +121,17 @@
                     </div>
                     </div>
 
-                    <button *ngIf="!isLogin" type="button" class="login-button" (click)="SignUp()"
-                        [disabled]="isLoading">
-                        <span>Sign Up</span>
-                    </button>
 
+                    <button type="button" (click)="SignUp()" [disabled]="isLoading">
+                        Create Account
+                    </button>
                 </form>
             </div>
-            <div class="switch-mode" *ngIf="isLogin">
-                <p>
-                    Don't have an account?
-                    <a href="#" (click)="onSignup(); $event.preventDefault()">
-                        Sign Up
-                    </a>
-                </p>
-            </div>
-            <div class="switch-mode" *ngIf="!isLogin">
-                <p>
-                    Already have an account?
-                    <a href="#" (click)="onLogIn(); $event.preventDefault()">
-                        Log In
-                    </a>
-                </p>
-            </div>
+
+            <p class="switch">Already have an account?
+                <a (click)="onLogIn(); $event.preventDefault()">Login</a>
+            </p>
         </div>
 
-        <!-- SignUp Ends -->
     </div>
-
 </div>

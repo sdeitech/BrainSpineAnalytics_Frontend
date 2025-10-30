@@ -1,0 +1,107 @@
+.page {
+    padding: 25px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    margin-right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.tabs .active {
+    color: var(--text-color);
+    border-bottom: 2px solid #7b3ff3;
+    padding-bottom: 5px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.card {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.upload-box {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+select {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dropzone {
+    border: 2px dashed #ccc;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.dropzone input {
+    margin-top: 10px;
+}
+
+.btn-purple {
+    display: flex;
+    justify-content: space-evenly;
+    background: #7b3ff3;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-border {
+    border: 1px solid #000;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}

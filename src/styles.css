@@ -4,9 +4,11 @@
   --text-color: #1e1e1e;
   --sidebar-bg: #f4f4f7;
   --sidebar-text: #070707;
-  --navbar-bg: #ffffff;
+  --navbar-bg: #e0e0e0;
+  --nav-text-color: #272727;
   --border-color: #ddd;
   --card-bg: #f8f8f8;
+  --option-bg-color:#dadada;
 }
 
 /* 🌙 Dark theme overrides */
@@ -15,9 +17,11 @@ body.dark-theme {
   --text-color: #e0e0e0;
   --sidebar-bg: #181818;
   --sidebar-text: #e0e0e0;
-  --navbar-bg: #1e1e1e;
+  --navbar-bg: #525252;
+  --nav-text-color: #rgb(252, 252, 252)
   --border-color: #333;
   --card-bg: #222;
+   --option-bg-color:#333333;
 }
 
 /* Smooth transition for theme switch */
