@@ -9,9 +9,9 @@
 
         <p class="section" style="margin: 5px !important;">MAIN</p>
         <ul>
-          <li (click)="navigateTo('/dashboard')" [class.active]="isActive('/dashboard')"
-            [class.active]="isActive('/dashboard')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/dashboard" 
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -27,8 +27,8 @@
 
         <p class="section">PERFORMANCE</p>
         <ul>
-          <li (click)="navigateTo('/revenueAnalytics')" [class.active]="isActive('/revenueAnalytics')"
-            routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/revenueAnalytics" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -39,8 +39,8 @@
             </i> Revenue Analytics
           </li>
 
-          <li (click)="navigateTo('/appointments')" [class.active]="isActive('/appointments')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/appointments" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -53,8 +53,8 @@
             </i> Appointments
           </li>
 
-          <li (click)="navigateTo('/locations')" [class.active]="isActive('/locations')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/locations" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -70,8 +70,8 @@
 
         <p class="section">CLINICAL OPERATIONS</p>
         <ul>
-          <li (click)="navigateTo('/providers')" [class.active]="isActive('/providers')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/providers" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -84,8 +84,8 @@
             </i> Providers
           </li>
 
-          <li (click)="navigateTo('/tbiInsights')" [class.active]="isActive('/tbiInsights')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/tbiInsights" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -97,8 +97,8 @@
             </i> TBI Insights
           </li>
 
-          <li (click)="navigateTo('/diagnostics')" [class.active]="isActive('/diagnostics')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/diagnostics" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -110,8 +110,8 @@
             </i> Diagnostics
           </li>
 
-          <li (click)="navigateTo('/telehealth')" [class.active]="isActive('/telehealth')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/telehealth" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -125,8 +125,8 @@
 
         <p class="section">ADMIN</p>
         <ul>
-          <li (click)="navigateTo('/staffing')" [class.active]="isActive('/staffing')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/staffing" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -138,8 +138,8 @@
             </i> Staffing
           </li>
 
-          <li (click)="navigateTo('/referres')" [class.active]="isActive('/referres')" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/referres" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -152,8 +152,8 @@
             </i> Referres
           </li>
 
-          <li (click)="navigateTo('/dataIntergration')" [class.active]="isActive('/dataIntergration')"
-            routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <li routerLink="/dataIntergration" 
+              routerLinkActive="active">
             <i class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -169,14 +169,13 @@
 
     </div>
     <div class="footer-sidebar">
-      <button class="icon-btn">
+      <button class="icon-btn" (click)="toggleSidebar()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="lucide lucide-chevron-left h-4 w-4">
           <path d="m15 18-6-6 6-6"></path>
         </svg>
       </button>
-
     </div>
 
   </aside>

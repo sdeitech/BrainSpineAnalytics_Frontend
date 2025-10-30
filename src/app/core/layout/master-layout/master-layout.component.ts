@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { Router, NavigationEnd, RouterOutlet, RouterLinkActive, RouterLink } from '@angular/router';
 import { LoginService } from '../../services/Login/login.service';
 @Component({
   selector: 'app-master-layout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,RouterLinkActive],
+  imports: [CommonModule,
+    RouterLink,        
+    RouterLinkActive, 
+    RouterOutlet  ],
   templateUrl: './master-layout.component.html',
   styleUrls: ['./master-layout.component.css']
 })
