@@ -1,1 +1,110 @@
-<p>revenue-analytics works!</p>
+<div class="dashboard-wrapper">
+  
+  <header class="dashboard-header">
+    <h1>Revenue Analytics</h1>
+    <p>Detailed financial analytics & revenue insights</p>
+  </header>
+
+  <!-- Summary Cards -->
+  <section class="cards-grid">
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-currency-rupee"></i></div>
+      <div>
+        <p>Total Revenue</p>
+        <h2>${{ revenueSummary.totalRevenue | number }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-graph-up"></i></div>
+      <div>
+        <p>Monthly Growth</p>
+        <h2>{{ revenueSummary.monthlyGrowth }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-activity"></i></div>
+      <div>
+        <p>Top Dept</p>
+        <h2>{{ revenueSummary.topDepartment }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-calendar-check"></i></div>
+      <div>
+        <p>Best Month</p>
+        <h2>{{ revenueSummary.highestMonth }}</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detail Section -->
+  <section class="detailed-section">
+
+    <!-- Monthly Table -->
+    <div class="detail-card">
+      <h3><i class="bi bi-calendar3"></i> Monthly Revenue</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Total ($)</th>
+            <th>OPD ($)</th>
+            <th>IPD ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of monthlyData">
+            <td>{{ row.month }}</td>
+            <td>{{ row.revenue | number }}</td>
+            <td>{{ row.op | number }}</td>
+            <td>{{ row.ip | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Department Table -->
+    <div class="detail-card">
+      <h3><i class="bi bi-building"></i> Department Revenue</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Revenue ($)</th>
+            <th>Growth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dept of departmentRevenue">
+            <td>{{ dept.dept }}</td>
+            <td>{{ dept.revenue | number }}</td>
+            <td>{{ dept.growth }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mini chart placeholder -->
+    <div class="detail-card chart-card">
+      <h3><i class="bi bi-bar-chart"></i> Revenue Trend</h3>
+      <div class="chart-placeholder">Graph Placeholder</div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="detail-card">
+      <h3><i class="bi bi-bell-fill"></i> Finance Alerts</h3>
+      <ul class="alerts-list">
+        <li *ngFor="let a of alerts">
+          <i [class]="a.icon"></i>
+          <span>{{ a.msg }}</span>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+</div>

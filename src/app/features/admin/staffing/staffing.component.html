@@ -1,1 +1,43 @@
-<p>staffing works!</p>
+<div class="dashboard">
+
+  <div class="header">
+    <h2>Staffing</h2>
+
+    <div class="actions">
+      <button class="btn">📅 Pick a date range</button>
+      <select class="drop"><option>Location</option></select>
+      <button class="btn">⬇ Export</button>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="card" *ngFor="let item of stats">
+      <h4>{{ item.title }}</h4>
+      <h2>{{ item.value }}</h2>
+      <p>{{ item.sub }}</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+
+    <div class="panel">
+      <h3>Shift Duration Distribution by Role</h3>
+
+      <div class="role-row" *ngFor="let r of roles">
+        <span class="role">{{r.name}}</span>
+        <div class="bar"><div class="fill"></div></div>
+        <span class="avg">{{r.avg}}</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Active Staff per Site</h3>
+      </div>
+
+      <div class="chart-placeholder"></div>
+    </div>
+
+  </div>
+
+</div>

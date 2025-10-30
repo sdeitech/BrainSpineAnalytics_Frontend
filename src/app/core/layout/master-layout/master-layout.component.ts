@@ -25,7 +25,9 @@ export class MasterLayoutComponent implements OnInit {
     this.darkTheme = localStorage.getItem('theme') === 'dark';
     document.body.classList.toggle('dark-theme', this.darkTheme);
   }
-
+  isActive(url: string) {
+    return this.router.url === url;
+  }
   navigateTo(path: string) {
     this.router.navigate([path]);
   }

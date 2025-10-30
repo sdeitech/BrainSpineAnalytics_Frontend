@@ -1,1 +1,64 @@
-<p>locations works!</p>
+<div class="dashboard">
+
+  <div class="header">
+    <h2>Location Analysis</h2>
+
+    <div class="actions">
+      <select class="drop" [(ngModel)]="selectedLocation" (change)="filterData()">
+        <option value="">All Locations</option>
+        <option *ngFor="let loc of locations" [value]="loc">{{loc}}</option>
+      </select>
+
+      <select class="drop" [(ngModel)]="selectedPeriod" (change)="filterData()">
+        <option value="month">This Month</option>
+        <option value="quarter">This Quarter</option>
+        <option value="year">This Year</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="card">
+      <h4>Active Locations</h4>
+      <h2>{{activeCount}}</h2>
+      <p>Total operational facilities</p>
+    </div>
+
+    <div class="card">
+      <h4>Avg Patient Per Day</h4>
+      <h2>{{avgPatients}}</h2>
+      <p>Across all branches</p>
+    </div>
+
+    <div class="card">
+      <h4>Avg Revenue / Location</h4>
+      <h2>₹ {{avgRevenue}}</h2>
+      <p>Period average</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+
+    <!-- Chart -->
+    <div class="panel">
+      <h3 class="section-title">Patient Growth Trend</h3>
+      <div class="chart-placeholder"></div>
+    </div>
+
+    <!-- Top performing branches -->
+    <div class="panel">
+      <h3 class="section-title">Top Performing Locations</h3>
+
+      <div *ngFor="let loc of performance" class="role-row">
+        <div class="role">{{loc.name}}</div>
+        <div class="bar">
+          <div class="fill" [style.width.%]="loc.value"></div>
+        </div>
+        <div class="value">{{loc.value}}%</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

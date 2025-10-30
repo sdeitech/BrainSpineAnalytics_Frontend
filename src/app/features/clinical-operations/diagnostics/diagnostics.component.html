@@ -1,1 +1,70 @@
-<p>diagnostics works!</p>
+<div class="page-container">
+  <h2 class="page-title">Diagnostics Analysis</h2>
+
+  <!-- Filters -->
+  <div class="filters">
+    <div class="filter-group">
+      <label>Date From</label>
+      <input type="date" [(ngModel)]="dateFrom" />
+    </div>
+
+    <div class="filter-group">
+      <label>Date To</label>
+      <input type="date" [(ngModel)]="dateTo" />
+    </div>
+
+    <div class="filter-group">
+      <label>Test Type</label>
+      <select [(ngModel)]="selectedTestType">
+        <option value="">All</option>
+        <option *ngFor="let test of testTypes" [value]="test">{{ test }}</option>
+      </select>
+    </div>
+
+    <button class="btn">Apply Filters</button>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="card-row">
+    <div class="card" *ngFor="let item of diagnosticsSummary">
+      <h3>{{ item.title }}</h3>
+      <div class="value">{{ item.value }}</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="chart-section">
+    <div class="chart-box">
+      <h3>Test Volume Trend</h3>
+      <div class="chart-placeholder">Chart Placeholder</div>
+    </div>
+
+    <div class="chart-box">
+      <h3>Critical Findings Trend</h3>
+      <div class="chart-placeholder">Chart Placeholder</div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-section">
+    <h3>Top Diagnostic Tests</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Test Name</th>
+          <th>Volume</th>
+          <th>Abnormal Findings</th>
+          <th>Avg TAT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of topDiagnostics">
+          <td>{{ t.test }}</td>
+          <td>{{ t.volume }}</td>
+          <td>{{ t.abnormal }}</td>
+          <td>{{ t.tat }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

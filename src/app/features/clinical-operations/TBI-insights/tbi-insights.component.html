@@ -1,1 +1,86 @@
-<p>tbi-insights works!</p>
+<div class="page-container">
+  <h2 class="page-title">TBI Insights</h2>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label>Provider</label>
+      <select [(ngModel)]="selectedProvider">
+        <option value="" selected>All Providers</option>
+        <option *ngFor="let p of providers" [value]="p">{{ p }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Date Range</label>
+      <input type="date" [(ngModel)]="startDate" />
+      <input type="date" [(ngModel)]="endDate" />
+    </div>
+
+    <button class="btn">Apply</button>
+  </div>
+
+  <!-- Cards Row -->
+  <div class="card-row">
+    <div class="card">
+      <h3>Total TBI Cases</h3>
+      <p class="value">1,248</p>
+      <small>+12% from last month</small>
+    </div>
+
+    <div class="card">
+      <h3>Severe TBI Cases</h3>
+      <p class="value">312</p>
+      <small>+4% from last month</small>
+    </div>
+
+    <div class="card">
+      <h3>Moderate TBI Cases</h3>
+      <p class="value">560</p>
+      <small>+7% from last month</small>
+    </div>
+
+    <div class="card">
+      <h3>Mild TBI Cases</h3>
+      <p class="value">376</p>
+      <small>-3% from last month</small>
+    </div>
+  </div>
+
+  <!-- Chart Placeholders -->
+  <div class="chart-section">
+    <div class="chart-box">
+      <h3>TBI Severity Distribution</h3>
+      <div class="chart-placeholder">[Pie Chart Placeholder]</div>
+    </div>
+
+    <div class="chart-box">
+      <h3>TBI Trend Over Time</h3>
+      <div class="chart-placeholder">[Line Chart Placeholder]</div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-section">
+    <h3>TBI Patient List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Patient ID</th>
+          <th>Age</th>
+          <th>TBI Severity</th>
+          <th>Provider</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tbiData">
+          <td>{{t.id}}</td>
+          <td>{{t.age}}</td>
+          <td>{{t.severity}}</td>
+          <td>{{t.provider}}</td>
+          <td>{{t.date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

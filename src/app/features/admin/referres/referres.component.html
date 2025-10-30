@@ -1,1 +1,96 @@
-<p>referres works!</p>
+<div class="dashboard-wrapper">
+  <header class="dashboard-header">
+    <h1>Referral Dashboard</h1>
+    <p>Manage employee referral system & track candidate status</p>
+  </header>
+
+  <section class="cards-grid">
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-people"></i></div>
+      <div>
+        <p>Total Referrals</p>
+        <h2>{{ referralSummary.totalReferrals }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-patch-check"></i></div>
+      <div>
+        <p>Approved</p>
+        <h2>{{ referralSummary.approved }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-hourglass-split"></i></div>
+      <div>
+        <p>Pending</p>
+        <h2>{{ referralSummary.pending }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-x-circle"></i></div>
+      <div>
+        <p>Rejected</p>
+        <h2>{{ referralSummary.rejected }}</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="detailed-section">
+    <!-- Referral Table -->
+    <div class="detail-card">
+      <h3><i class="bi bi-people"></i> Referrals List</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Referred By</th>
+            <th>Position</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let r of referralsList">
+            <td>{{ r.name }}</td>
+            <td>{{ r.referredBy }}</td>
+            <td>{{ r.role }}</td>
+            <td>
+              <span class="tag" 
+                [ngClass]="{
+                  'approved': r.status == 'Approved',
+                  'pending': r.status == 'Pending',
+                  'rejected': r.status == 'Rejected'
+                }">
+                {{ r.status }}
+              </span>
+            </td>
+            <td>{{ r.date }}</td>
+            <td>
+              <button (click)="approve(r)">Approve</button>
+              <button (click)="reject(r)">Reject</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="detail-card">
+      <h3><i class="bi bi-bell-fill"></i> Recent Activities</h3>
+      <ul class="alerts-list">
+        <li *ngFor="let a of recentActivities">
+          <i [class]="a.icon"></i>
+          <span>{{ a.msg }}</span>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+</div>

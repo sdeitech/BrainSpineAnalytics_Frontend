@@ -1,1 +1,70 @@
-<p>telehealth works!</p>
+<div class="page-container">
+  <h2 class="page-title">Telehealth Insights</h2>
+
+  <!-- Filters -->
+  <div class="filters">
+    <div class="filter-group">
+      <label>Date From</label>
+      <input type="date" [(ngModel)]="dateFrom" />
+    </div>
+
+    <div class="filter-group">
+      <label>Date To</label>
+      <input type="date" [(ngModel)]="dateTo" />
+    </div>
+
+    <div class="filter-group">
+      <label>Consultation Mode</label>
+      <select [(ngModel)]="selectedMode">
+        <option value="">All</option>
+        <option *ngFor="let mode of telehealthModes" [value]="mode">{{ mode }}</option>
+      </select>
+    </div>
+
+    <button class="btn">Apply Filters</button>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="card-row">
+    <div class="card" *ngFor="let item of summary">
+      <h3>{{ item.title }}</h3>
+      <div class="value">{{ item.value }}</div>
+    </div>
+  </div>
+
+  <!-- Chart Section -->
+  <div class="chart-section">
+    <div class="chart-box">
+      <h3>Daily Telehealth Volume</h3>
+      <div class="chart-placeholder">Chart Placeholder</div>
+    </div>
+
+    <div class="chart-box">
+      <h3>Resolution Trend</h3>
+      <div class="chart-placeholder">Chart Placeholder</div>
+    </div>
+  </div>
+
+  <!-- Provider Performance -->
+  <div class="table-section">
+    <h3>Top Telehealth Providers</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Sessions</th>
+          <th>Rating</th>
+          <th>Follow-ups</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of providers">
+          <td>{{ p.name }}</td>
+          <td>{{ p.sessions }}</td>
+          <td>{{ p.rating }}</td>
+          <td>{{ p.followups }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

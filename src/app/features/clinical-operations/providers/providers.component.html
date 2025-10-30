@@ -1,1 +1,80 @@
-<p>providers works!</p>
+<div class="dashboard">
+
+  <div class="header">
+    <h2>Provider’s Productivity</h2>
+
+    <div class="actions">
+      <select class="drop" [(ngModel)]="selectedProvider" (change)="filterData()">
+        <option value="" disabled selected>Select Provider</option>
+        <option *ngFor="let p of providers" [value]="p">{{ p }}</option>
+      </select>
+
+      <select class="drop" [(ngModel)]="selectedPeriod" (change)="filterData()">
+        <option value="week">This Week</option>
+        <option value="month" selected>This Month</option>
+        <option value="year">This Year</option>
+      </select>
+
+      <button class="btn">Export</button>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    <div class="card">
+      <h4>Total Providers</h4>
+      <h2>{{ totalProviders }}</h2>
+      <p>Active doctors in system</p>
+    </div>
+
+    <div class="card">
+      <h4>Avg Patients / Day</h4>
+      <h2>{{ avgPatients }}</h2>
+      <p>Per provider</p>
+    </div>
+
+    <div class="card">
+      <h4>Avg Satisfaction</h4>
+      <h2>{{ avgRating }}</h2>
+      <p>Rating score</p>
+    </div>
+
+    <div class="card">
+      <h4>Avg Utilization</h4>
+      <h2>{{ avgUtilization }}%</h2>
+      <p>Efficiency score</p>
+    </div>
+  </div>
+
+  <!-- Providers Table -->
+  <div class="table-panel">
+    <h3>Provider Performance Details</h3>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Patients Seen</th>
+          <th>Hours Worked</th>
+          <th>Rating</th>
+          <th>Utilization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of productivityData">
+          <td>{{ p.name }}</td>
+          <td>{{ p.patients }}</td>
+          <td>{{ p.hours }}</td>
+          <td>{{ p.rating }}</td>
+          <td>
+            <div class="bar">
+              <div class="fill" [style.width.%]="p.utilization"></div>
+            </div>
+            {{ p.utilization }}%
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -1,1 +1,90 @@
-<p>appointments works!</p>
+<div class="dashboard-wrapper">
+
+  <header class="dashboard-header">
+    <h1>Appointments</h1>
+    <p>Track all patient appointments and schedules</p>
+  </header>
+
+  <!-- Summary Cards -->
+  <section class="cards-grid">
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-calendar-check"></i></div>
+      <div>
+        <p>Total Appointments</p>
+        <h2>{{ summary.total }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-check2-circle"></i></div>
+      <div>
+        <p>Completed</p>
+        <h2>{{ summary.completed }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-hourglass-split"></i></div>
+      <div>
+        <p>Pending</p>
+        <h2>{{ summary.pending }}</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon"><i class="bi bi-x-circle"></i></div>
+      <div>
+        <p>Cancelled</p>
+        <h2>{{ summary.cancelled }}</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Table -->
+  <section class="detailed-section">
+    <div class="detail-card">
+      <h3><i class="bi bi-clock"></i> Today's Appointments</h3>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let appt of todayAppointments">
+            <td>{{ appt.patient }}</td>
+            <td>{{ appt.doctor }}</td>
+            <td>{{ appt.time }}</td>
+            <td>
+              <span [ngClass]="{
+                'stat-success': appt.status === 'Completed',
+                'stat-warning': appt.status === 'Pending',
+                'stat-danger': appt.status === 'Cancelled'
+              }">
+              {{ appt.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Alerts -->
+    <div class="detail-card">
+      <h3><i class="bi bi-bell-fill"></i> Appointment Alerts</h3>
+
+      <ul class="alerts-list">
+        <li *ngFor="let a of alerts">
+          <i [class]="a.icon"></i>
+          <span>{{ a.msg }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</div>
