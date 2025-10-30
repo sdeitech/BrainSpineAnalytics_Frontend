@@ -31,7 +31,7 @@ export class PatientDashboardComponent {
       prescriptions: 4,
       labReports: 3,
       billingDue: 0,
-      patientName: 'Champ',
+      patientName: localStorage.getItem('username'),
     };
 
     this.upcomingAppointments = [

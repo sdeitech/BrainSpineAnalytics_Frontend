@@ -1,8 +1,13 @@
+/* 🧱 Base Wrapper */
 .dashboard-wrapper {
   font-family: 'Inter', sans-serif;
-  background-color: #f6f8fb;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* 🧠 Header */
 .dashboard-header {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -11,13 +16,16 @@
 .dashboard-header h1 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 .dashboard-header p {
-  color: #64748b;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
+/* 📊 Summary Cards */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -26,13 +34,13 @@
 }
 
 .dashboard-card {
-  background: white;
+  background: var(--card-bg);
   padding: 1.2rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
 }
 
 .dashboard-card:hover {
@@ -41,36 +49,40 @@
 
 .card-icon {
   font-size: 1.8rem;
-  color: #2563eb;
+  color: #2563eb; /* Accent color stays same in both themes */
   margin-right: 1rem;
 }
 
 .card-info .label {
-  color: #64748b;
+  color: var(--text-color);
+  opacity: 0.7;
   font-size: 0.9rem;
 }
 
 .card-info .value {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-color);
 }
 
-/* Table Styles */
+/* 🧾 Detail Cards & Tables */
 .detail-card {
-  background: white;
+  background: var(--card-bg);
+  color: var(--text-color);
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .detail-card h3 {
-  color: #1e293b;
+  color: var(--text-color);
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
 
+/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -78,22 +90,28 @@ table {
 
 th, td {
   padding: 0.75rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border-color);
   text-align: left;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 th {
-  color: #475569;
+  color: var(--text-color);
   font-weight: 600;
-  background-color: #f8fafc;
+  background-color: var(--sidebar-bg);
 }
 
+td {
+  color: var(--text-color);
+}
+
+/* ✅ Status indicators */
 .status-confirmed {
-  color: #16a34a;
+  color: #16a34a; /* green */
   font-weight: 600;
 }
 
 .status-pending {
-  color: #f59e0b;
+  color: #f59e0b; /* yellow */
   font-weight: 600;
 }

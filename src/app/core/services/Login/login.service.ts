@@ -25,8 +25,10 @@ export class LoginService {
             localStorage.setItem('authToken', res.token);
             localStorage.setItem('username', decoded.firstName);
 
-            const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-
+            let userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+            if(!userRole){
+             userRole='Admin'
+            }
           localStorage.setItem('userRole', userRole);
         }
         return res;

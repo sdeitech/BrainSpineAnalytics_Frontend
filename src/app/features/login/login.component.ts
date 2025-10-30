@@ -43,6 +43,7 @@ export class LoginComponent {
   }
 
   async ngOnInit(): Promise<void> {
+   localStorage.clear();
    await this.getRoleMaster()
   }
 

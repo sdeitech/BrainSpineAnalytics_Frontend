@@ -26,6 +26,6 @@ export class MainDashboardComponent {
 
   }
   async ngOnInit(){
-    //this.Role = await this.loginService.getUserRole();
+    this.Role = await this.loginService.getUserRole();
   }
 }
