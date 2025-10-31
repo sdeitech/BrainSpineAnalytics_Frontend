@@ -763,7 +763,7 @@ nav ul li {
   bottom: 60px; /* ✅ adjust height so it appears above user row */
   left: 0;
   width: 100%;
-  
+  z-index: 1000000;
   background: var(--bg-color);
   color: var(--text-color);
   border: 1px solid #e5e7eb;
