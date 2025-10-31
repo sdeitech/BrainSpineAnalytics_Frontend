@@ -1,0 +1,54 @@
+<div class="page">
+
+  <div class="page-header">
+    <h2>Outcome Analysis</h2>
+    <button class="btn-outline">Pick a date range</button>
+  </div>
+
+  <!-- Metric Cards -->
+  <div class="grid-4">
+    <div class="card" *ngFor="let m of metrics">
+      <div class="card-title">{{ m.title }}</div>
+      <div class="card-value">{{ m.value }}</div>
+      <div class="card-sub">{{ m.change }} vs last period</div>
+    </div>
+  </div>
+
+  <!-- Trend Chart Mock Block -->
+  <div class="card mt20">
+    <div class="row">
+      <h3 class="section-title">Outcome Trend (Last 6 Months)</h3>
+    </div>
+    <div class="trend-container">
+      <div class="trend-bar" *ngFor="let t of trendData" 
+        [style.height]="t.score * 10 + 'px'">
+        <span>{{ t.label }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <h3 class="section-title mt20">Outcome Details by Procedure</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Procedure</th>
+        <th>Patients</th>
+        <th>Avg Outcome Score</th>
+        <th>Improvement</th>
+        <th>Avg Recovery Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of outcomes">
+        <td>{{ o.procedure }}</td>
+        <td>{{ o.patients }}</td>
+        <td>{{ o.outcome }}</td>
+        <td>{{ o.change }}</td>
+        <td>{{ o.recovery }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,6 +1,5 @@
 /* 🧱 Base Wrapper */
 .dashboard-wrapper {
-  font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   min-height: 100vh;

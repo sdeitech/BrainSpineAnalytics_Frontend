@@ -1,4 +1,4 @@
-* {padding:0; box-sizing:border-box; font-family:'Inter', sans-serif;}
+* {padding:0; box-sizing:border-box;}
 
 .login-wrapper {
   display: flex;
@@ -9,7 +9,7 @@
 /* LEFT IMAGE */
 .login-left {
   width: 50%;
-  background: #eef7ff;
+  background: #f9f9f9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,9 +38,9 @@
 }
 
 .brand-logo {
-  width: 60px;
+  width: 255px;
   display: block;
-  /* margin: 0 auto 10px; */
+  margin: 25px;
 }
 
 .brand-box {

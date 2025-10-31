@@ -1,0 +1,75 @@
+<div class="page-container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h2>Procedure Analysis</h2>
+    <button class="btn-date">Pick a date range</button>
+  </div>
+
+  <!-- Metrics Row -->
+  <div class="metrics-grid">
+    <div class="metric-box">
+      <h4>Total Procedures</h4>
+      <div class="metric-value">450</div>
+      <span class="metric-sub">+12% increase</span>
+    </div>
+
+    <div class="metric-box">
+      <h4>Avg Visits / Procedure</h4>
+      <div class="metric-value">3.8</div>
+      <span class="metric-sub">+6% increase</span>
+    </div>
+
+    <div class="metric-box">
+      <h4>Avg Outcome Score</h4>
+      <div class="metric-value">7.8 / 10</div>
+      <span class="metric-sub">+8% increase</span>
+    </div>
+
+    <div class="metric-box">
+      <h4>Avg Recovery Time</h4>
+      <div class="metric-value">21 days</div>
+      <span class="metric-sub">-4% faster</span>
+    </div>
+  </div>
+
+  <!-- Search + Actions -->
+  <div class="toolbar">
+    <input class="search-input" type="text" placeholder="Search procedure">
+
+    <div class="toolbar-btns">
+      <button class="btn">Filter</button>
+      <button class="btn">View</button>
+      <button class="btn">Export</button>
+      <button class="btn primary">Create Procedure</button>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Procedure Name</th>
+        <th>Performed By</th>
+        <th>Patients</th>
+        <th>Follow-up %</th>
+        <th>Avg Outcome Improvement</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of procedures">
+        <td>{{ p.name }}</td>
+        <td>{{ p.doctor }}</td>
+        <td>{{ p.patients }}</td>
+        <td>{{ p.followup }}</td>
+        <td>{{ p.outcome }}</td>
+        <td>
+          <button class="link">Check Cases</button>
+          <button class="link">View Outcome</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -24,9 +24,14 @@ export class LoginService {
             const decoded: any = jwtDecode(res.token);
             localStorage.setItem('authToken', res.token);
             localStorage.setItem('username', decoded.firstName);
+            let userDetails:any={}
+            userDetails.email=decoded.email
+            userDetails.firstname=decoded.firstName
+            userDetails.lastname=decoded.lastName
+            localStorage.setItem('userDetails', JSON.stringify(userDetails));
 
             let userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-            if(!userRole){
+            if(!userRole || userRole=='Administrator'){
              userRole='Admin'
             }
           localStorage.setItem('userRole', userRole);
@@ -63,6 +68,11 @@ export class LoginService {
     );
   }
 
+  getNavbardetails(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/API/Menu/NavBar`).pipe(
+      catchError(this.handleError)
+    );
+  }
   // 🔹 Get Logged-in User Info
   getUserProfile(): Observable<any> {
     return this.http.get(`${this.baseUrl}/API/Auth/user/profile`, {

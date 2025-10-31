@@ -1,0 +1,102 @@
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <div class="page-header">
+    <span class="title">Cohort Analysis</span>
+    <button class="btn-outline">Pick a date range</button>
+  </div>
+
+  <!-- Stats Cards Row -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>Total patients</h3>
+      <div class="value">200</div>
+      <div class="sub-text">24% increase</div>
+    </div>
+
+    <div class="stat-card">
+      <h3>Average visits done</h3>
+      <div class="value">200</div>
+      <div class="sub-text">45% increase</div>
+    </div>
+
+    <div class="stat-card">
+      <h3>Average Composite Score</h3>
+      <div class="value">7.2 / 10</div>
+      <div class="sub-text">40% increase</div>
+    </div>
+
+    <div class="stat-card">
+      <h3>Avg. improvement</h3>
+      <div class="value">37%</div>
+      <div class="sub-text">15% increase</div>
+    </div>
+  </div>
+
+  <!-- Quick Stats Box -->
+  <div class="quick-stats-box">
+    <div>3 Avg Tracking Routines</div>
+    <div>2 Doctors Count</div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <input type="text" placeholder="Search cohort" class="input" />
+    
+    <div class="actions">
+      <button class="btn-outline">Filter</button>
+      <button class="btn-outline">View</button>
+      <button class="btn-outline">Export</button>
+      <button class="btn-primary">Create Cohort</button>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Cohort Name</th>
+          <th>Created By</th>
+          <th>Patients</th>
+          <th>Follow-ups %</th>
+          <th>Avg Outcome Change</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of cohorts">
+          <td><input type="checkbox" /></td>
+          <td>{{c.name}}</td>
+          <td>{{c.doctor}}</td>
+          <td>{{c.patients}}</td>
+          <td>{{c.followup}}</td>
+          <td>{{c.change}}</td>
+          <td>
+            <button class="link-btn">Check Cohort</button>
+            <button class="link-btn">Review Outcome</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button class="btn-outline">Prev</button>
+
+    <ng-container *ngFor="let p of pages">
+      <button class="page-btn" [class.active]="p === page">{{p}}</button>
+    </ng-container>
+
+    <button class="btn-outline">Next</button>
+
+    <select class="select">
+      <option>25 rows per page</option>
+      <option>50 rows per page</option>
+    </select>
+  </div>
+
+</div>

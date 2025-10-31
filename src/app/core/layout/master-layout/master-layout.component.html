@@ -7,61 +7,107 @@
           brain<span class="plus">+</span>spine <span class="plus">+</span>
           <span class="pain">pain</span>
         </span>
-        <img src="assets/logo/logobrainspine.png" class="brand-logo" alt="logo">
+        <img src="assets/logo/MainLogo.png" class="brand-logo" alt="logo">
+
+        <!-- Toggle Button -->
         <button class="collapse-btn" (click)="toggleSidebar()">
-          |< </button>
+          <span *ngIf="!isCollapsed"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+              height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="arrow-left">
+              <polyline points="12 3 6 9 12 15"></polyline>
+            </svg>
+          </span>
+          <span  *ngIf="isCollapsed"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+              height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="arrow-right">
+              <polyline points="6 3 12 9 6 15"></polyline>
+            </svg>
+          </span>
+        </button>
       </div>
+
     </div>
     <div class="horizontalLine"></div>
-    <div class="sidebar-scroll">
-      <nav class="nav">
+    <!-- MENU -->
+  <div class="sidebar-scroll">
+    <nav class="nav">
 
-        <div *ngFor="let m of menu">
+  <div *ngFor="let m of menu">
 
-          <p class="section" *ngIf="m.title =='Dashboard'">{{ m.title }}</p>
+    <p class="section" *ngIf="m.title == 'Dashboard'">{{ m.title }}</p>
 
-          <ul>
+    <ul>
 
-            <!-- Parent -->
-            <li *ngIf="m.toggle" (click)="toggleMenu(m)" class="parent-menu" [class.open]="m.open">
-              <span class="parent-left">
-                <i class="icon"></i>
-                {{ m.title }}
-              </span>
+      <!-- Parent Menu -->
+      <li *ngIf="m.toggle"
+          (click)="onMenuClick(m)"
+          (mouseenter)="isCollapsed && (m.open = true)"
+          (mouseleave)="isCollapsed && (m.open = false)"
+          class="parent-menu"
+          [ngClass]="{ 'open': m.open, 'collapsed-mode': isCollapsed }">
 
-              <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </li>
+        <span class="parent-left">
+          <i class="{{ m.icon }} icon"></i>
+          <span class="menu-text" *ngIf="!isCollapsed">{{ m.title }}</span>
+        </span>
 
-            <!-- CHILDREN: ng-container wraps the *ngIf so li only has *ngFor -->
-            <ng-container *ngIf="m.open">
-              <li *ngFor="let item of m.items" routerLink="{{ item.link }}" routerLinkActive="active"
-                class="child-item">
-                <span class="dot"></span> {{ item.label }}
-              </li>
-            </ng-container>
-
-
-
-          </ul>
-
-        </div>
-      </nav>
-
-
-
-
-    </div>
-    <div class="footer-sidebar" style="display: none;">
-      <button class="icon-btn" (click)="toggleSidebar()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="lucide lucide-chevron-left h-4 w-4">
-          <path d="m15 18-6-6 6-6"></path>
+        <!-- Arrow only in expanded -->
+        <svg *ngIf="!isCollapsed" class="arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
-      </button>
+
+        <!-- FLYOUT CHILD MENU WHEN COLLAPSED -->
+        <ul class="flyout-menu" *ngIf="isCollapsed  && m.open && m.items?.length">
+          <li *ngFor="let item of m.items"
+              routerLink="{{ item.link }}"
+              routerLinkActive="active"
+              class="flyout-item">
+              {{ item.label }}
+          </li>
+        </ul>
+
+      </li>
+
+      <!-- Children (Expanded Mode) -->
+      <ng-container *ngIf="m.open && !isCollapsed">
+        <li *ngFor="let item of m.items"
+            routerLink="{{ item.link }}"
+            routerLinkActive="active"
+            class="child-item">
+          <span class="dot"></span> {{ item.label }}
+        </li>
+      </ng-container>
+
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+    <div class="footer-sidebar">
+      <div class="sidebar-user-section">
+
+        <div class="user-row" (click)="toggleUserMenu()">
+          <div class="avatarfooter">{{avatarText}}</div>
+          <div class="user-details">
+            <div class="role">{{Role}}</div>
+            <div class="name">{{userName}}</div>
+          </div>
+          <span class="arrow" [class.open]="userMenuOpen">⌃</span>
+        </div>
+        <div class="user-dropdown" *ngIf="userMenuOpen">
+          <button class="dropdown-item" (click)="navigateTo('userProfile')">
+            <span>👤</span> Profile
+          </button>
+
+          <button class="dropdown-item logout" (click)="logout()">
+            <span>🔴</span> Logout
+          </button>
+        </div>
+      </div>
+
     </div>
 
   </aside>

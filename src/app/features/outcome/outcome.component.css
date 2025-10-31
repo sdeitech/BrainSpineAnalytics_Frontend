@@ -1,0 +1,88 @@
+.page {
+  padding: 20px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn-outline {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+}
+
+.card {
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.card-title {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.card-value {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+.card-sub {
+  color: #4f46e5;
+  font-size: 12px;
+}
+
+.section-title {
+  margin-bottom: 10px;
+}
+
+.mt20 { margin-top: 20px; }
+
+.trend-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 20px 0;
+  height: 160px;
+}
+
+.trend-bar {
+  width: 35px;
+  background: #4f46e5;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 10px;
+  color: #000;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid #eee;
+  padding: 12px;
+  text-align: left;
+}
